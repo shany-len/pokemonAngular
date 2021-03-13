@@ -1,0 +1,236 @@
+<div *ngIf="showBusqueda; else elseBusqueda" class="wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 imagenPok">
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-dark">Rarity</span>
+            <span class="tag is-success">{{ elemento.rarity }}</span>
+          </div>
+          <!--tags-->
+        </div>
+        <!--control-->
+        <div class="control">
+          <div class="tags has-addons">
+            <span class="tag is-success">Card number </span>
+            <span class="tag is-dark">{{ elemento.number }}</span>
+          </div>
+          <!--tags-->
+        </div>
+        <!--Control-->
+        <div class="cards">
+          <img
+            class="card-img-top"
+            src="{{ elemento.cardImg }}"
+            alt="{{ elemento.name }}"
+          />
+        </div>
+        <!--cards-->
+        <div class="tags has-addons mt-2 mb-2">
+          <img
+            src="../../assets/tipos/artist.png"
+            alt="icon"
+            style="width: 20px; border-radius: 15px"
+          />
+          <span> Artist: {{ elemento.artist }}</span>
+        </div>
+        <!--tags 2-->
+      </div>
+      <!--col xl 3-->
+      <div class="col-lg-9 mb-4">
+        <section>
+          <div class="card">
+            <div class="card-header">
+              <div style="float: left">
+                <h1>{{ elemento.name }} - {{ elemento.superType }}</h1>
+              </div>
+              <!--float left-->
+              <div style="float: right; margin-right: 2%">
+                <h5 style="margin-top: 10%">
+                  HP: {{ elemento.hp }}
+                  <abbr data-title="{{ elemento.type }}">
+                    <img
+                      src="{{ elemento.imgType }}"
+                      alt="tipo"
+                      style="width: 23px"
+                  /></abbr>
+                </h5>
+              </div>
+              <!--float right-->
+            </div>
+            <!--card header-->
+            <div class="card-body">
+              <h4>Information</h4>
+              <h5 class="desc ml-2">{{ elemento.desc }}</h5>
+              <span class="pokedex ml-2">
+                <abbr data-title="Pokedex number">
+                  <img
+                    src="../../assets/tipos/pokedex.png"
+                    alt="poke"
+                    style="width: 40px"
+                    class="icono"
+                  />
+                </abbr>
+              </span>
+              #{{ elemento.pokedex }}<br />
+              <!--pokedex-->
+              <span>
+                <abbr data-title="Evolution">
+                  <img
+                    src="../../assets/tipos/evo.png"
+                    alt="evo"
+                    style="width: 50px"
+                    class="icono"
+                  />
+                </abbr>
+              </span>
+              {{ elemento.evolves }}<br />
+              <span style="margin-right: 3px">
+                <abbr data-title="Set-logo">
+                  <img
+                    src="{{ elemento.setImg }}"
+                    alt="logo"
+                    style="width: 50px"
+                    class="icono"
+                  />
+                </abbr>
+              </span>
+              {{ elemento.set }}
+            </div>
+            <!--card body-->
+            <div class="card-footer pt-0">
+              <div class="attacks">
+                <table
+                  *ngFor="let data of elemento.attacks; let i = index"
+                  class="table table-borderless"
+                >
+                  <thead>
+                    <tr>
+                      <td [ngStyle]="valor">
+                        <span *ngFor="let costos of data.costo; let j = index">
+                          <abbr data-title="{{ costos.name }}">
+                            <img
+                              src="{{ costos.img }}"
+                              alt="costos{{ j }}"
+                              style="width: 26px; padding-right: 2px"
+                          /></abbr>
+                        </span>
+                      </td>
+                      <td>
+                        <h4
+                          class="desc pb-0"
+                          style="font-weight: bold; font-style: italic"
+                        >
+                          {{ data.name }}
+                        </h4>
+                      </td>
+                      <td style="float: right; margin-right: 5%">
+                        {{ data.damage }}
+                      </td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colspan="3">
+                        <h5 class="desc">{{ data.text }}</h5>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="weakness">
+                <div>
+                  <h4 class="mb-0">Weakness</h4>
+                  <div
+                    *ngIf="elemento.weaknesses.exist; else elseBlock"
+                    class="card-body pt-0"
+                    style="border-bottom: 0"
+                  >
+                    <abbr data-title="{{ elemento.weaknesses.name }}">
+                      <img
+                        src="{{ elemento.weaknesses.img }}"
+                        alt="weaknesses"
+                        style="width: 26px; padding-right: 2px"
+                    /></abbr>
+                    <span> {{ elemento.weaknesses.value }}</span>
+                  </div>
+                  <ng-template #elseBlock>
+                    <div class="card-body pt-0" style="border-bottom: 0">
+                      <span> {{ elemento.weaknesses.value }}</span>
+                    </div>
+                  </ng-template>
+                </div>
+                <div>
+                  <h4 class="mb-0">Resistance</h4>
+                  <div
+                    *ngIf="elemento.resistances.exist; else elseBlock2"
+                    class="card-body pt-0"
+                    style="border-bottom: 0"
+                  >
+                    <abbr data-title="{{ elemento.resistances.name }}">
+                      <img
+                        src="{{ elemento.resistances.img }}"
+                        alt="resistance"
+                        style="width: 26px; padding-right: 2px"
+                    /></abbr>
+                    <span> {{ elemento.resistances.value }}</span>
+                  </div>
+                  <ng-template #elseBlock2>
+                    <div class="card-body pt-0" style="border-bottom: 0">
+                      <span> {{ elemento.resistances.value }}</span>
+                    </div>
+                  </ng-template>
+                </div>
+                <div>
+                  <h4 class="mb-0">Retreat cost</h4>
+                  <div class="card-body pt-0" style="border-bottom: 0">
+                    <span
+                      *ngFor="
+                        let retreat of elemento.retreatCost;
+                        let k = index
+                      "
+                    >
+                      <abbr data-title="{{ retreat.name }}">
+                        <img
+                          src="{{ retreat.img }}"
+                          alt="retreat"
+                          style="width: 26px; padding-right: 2px" /></abbr
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--card footer-->
+          </div>
+          <!--card-->
+        </section>
+        <!--section-->
+      </div>
+      <!--col xl 9-->
+    </div>
+    <!--row-->
+  </div>
+
+  <div
+          *ngIf="isSet"
+          style="float: right; margin-right: 4%; margin-top: 1%; margin-bottom: 2%;"
+        >
+          <button class="btn" (click)="click()">
+            <img
+              src="https://freesvg.org/img/left.png"
+              alt="back"
+              style="width: 50px"
+            />
+          </button>
+        </div>
+        
+  <!--container-->
+</div>
+<!--Wrapper-->
+<ng-template #elseBusqueda>
+  <app-busqueda
+    [busquedaQuery]="busquedaInput"
+    [tipoQuery]="tipoInput"
+    [showCard]="showCard"
+  ></app-busqueda>
+</ng-template>

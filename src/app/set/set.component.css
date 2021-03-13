@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
+
+.ribbon{
+    position:relative;
+    display:inline-block;
+    text-align:center;
+    margin-bottom: 3%;
+    font-family: 'Redressed', cursive;
+    font-style: italic;
+  }
+  .text{
+    display:inline-block;
+    padding:0.5em 1em;
+    min-width:20em;
+    line-height:1.2em;
+    background: #2a8dff;
+    position:relative;
+  }
+  .ribbon:after,.ribbon:before,
+  .text:before,.text:after,
+  .bold:before{
+    content:'';
+    position:absolute;
+    border-style:solid;
+  }
+  .ribbon:before{
+    top:0.3em; left:0.2em;
+    width:100%; height:100%;
+    border:none;
+    background:#EBECED;
+    z-index:-2;
+  }
+  .text:before{
+    bottom:100%; left:0;
+    border-width: .5em .7em 0 0;
+    border-color: transparent #0a3e79 transparent transparent;
+  }
+  .text:after{
+    top:100%; right:0;
+    border-width: .5em 2em 0 0;
+    border-color: #0a3e79 transparent transparent transparent;
+  }
+  .ribbon:after, .bold:before{
+    top:0.5em;right:-2em;
+    border-width: 1.1em 1em 1.1em 3em;
+    border-color: #60a3f0 transparent #2a8dff #2a8dff;
+    z-index:-1;
+  }
+  .bold:before{
+    border-color: #EBECED transparent #EBECED #EBECED;
+    top:0.7em;
+    right:-2.3em;
+  }
+
+  .card {
+    border-radius: 20px;
+    box-shadow: 5px 5px 20px rgb(0 0 0 / 45%);
+  }
+  
+  .card-header {
+    border-bottom: 2px solid #707070;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  
+  .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    border-bottom: 2px solid #707070;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+  }
+  
+  .card-footer {
+    border-color: transparent;
+    background-color: transparent;
+    background: transparent;
+    border-bottom: 2px, #d3d3d3;
+  }
+  .wrapper {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
+  }

@@ -1,0 +1,40 @@
+<div *ngIf="showTarjeta; else elseTarjeta">
+<div *ngFor="let data of listaOrde; let i = index">
+  <h1 class="ribbon">
+    <span class="text"
+      ><strong class="bold">{{ data[0].series }} </strong></span
+    >
+  </h1>
+  <div class="wrapper">
+    <div *ngFor="let ele of data; let j = index">
+      <div class="card mb-5" (click)="presionar(ele)">
+        <div class="card-header">
+          <img src="{{ ele.images.logo }}" alt="tipo" style="height: 140px; width: 200px;" />
+        </div>
+        <!--card header-->
+        <div class="card-body">
+          <span>
+            <img
+              src="{{ ele.images.symbol }}"
+              alt="poke"
+              style="width: 50px; height: 40px;"
+              class="icono"
+            />
+          </span>
+          #{{ ele.name }}<br />
+        </div>
+        <!--card body
+        <div class="card-footer pt-0"></div>-->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<ng-template #elseTarjeta>
+  <app-busqueda
+  [busquedaQuery]="busquedaInput"
+  [tipoQuery]="tipoInput"
+  [showCard] = "showCard"
+></app-busqueda>
+</ng-template>

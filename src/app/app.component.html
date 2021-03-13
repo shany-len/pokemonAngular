@@ -1,0 +1,94 @@
+<header>
+  <nav
+    class="navbar navbar-expand-md navbar-dark fixed-top"
+    style="background: black"
+  >
+    <a class="navbar-brand">
+      <h6>
+        <img src="../assets/logo.jpg" style="width: 40px" />
+        Pokémon TCG
+      </h6></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="collapsibleNavbar"
+    >
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="pill" href="#name">Nombre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="pill" href="#set">Set</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main class="mt-5">
+  <div class="tab-content pt-5">
+    <div id="name" class="container-fluid tab-pane active">
+      <br />
+      <div
+        class="input-group mb-3"
+        style="width: 50%; margin-left: auto; margin-right: auto"
+      >
+        <input
+          type="text"
+          class="form-control"
+          #buscarInput
+          placeholder="Buscar"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-success" (click)="buscar(buscarInput)">
+            Buscar
+          </button>
+        </div>
+      </div>
+      <div *ngIf="condicion; else elseBlock">
+        <app-busqueda
+          [busquedaQuery]="busquedaInput"
+          [tipoQuery]="tipoInput"
+          [showCard] = "showCard"
+        ></app-busqueda>
+      </div>
+
+      <ng-template #elseBlock>
+        <h1 class="tituloPrevio mt-5">Ingresa tu búsqueda</h1>
+      </ng-template>
+    </div>
+    <div id="set" class="container-fluid tab-pane fade">
+      <br />
+      <app-set></app-set>
+    </div>
+  </div>
+
+  <div></div>
+</main>
+<router-outlet></router-outlet>
+
+<!-- <div class="input-group-prepend">
+          <label class="select" for="slct" >
+            <select id="slct" required="required" #select>
+              <option value="name" selected="selected">Nombre</option>
+              <option value="set">Set</option>
+            </select>
+            <svg>
+              <use xlink:href="#select-arrow-down"></use>
+            </svg>
+          </label>
+          <svg class="sprites">
+            <symbol id="select-arrow-down" viewbox="0 0 10 6">
+              <polyline points="1 1 5 5 9 1"></polyline>
+            </symbol>
+          </svg>
+        </div> -->
+

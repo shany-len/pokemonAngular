@@ -1,0 +1,77 @@
+<div class="wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3 imagenPok">
+            <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag is-dark">Rarity</span>
+                  <span class="tag is-success">{{ elemento.rarity }}</span>
+                </div>
+                <!--tags-->
+              </div>
+              <!--control-->
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag is-success">Card number
+                  </span>
+                  <span class="tag is-dark">{{ elemento.number }}</span>
+                </div>
+                <!--tags-->
+              </div>
+              <!--Control-->
+          <div class="cards">
+            <img
+              class="card-img-top"
+              src="{{ elemento.cardImg }}"
+              alt="{{ elemento.name }}"
+            />
+          </div>
+          <!--cards-->
+          <div class="tags has-addons mt-2 mb-2">
+            <img
+              src="../../assets/tipos/artist.png"
+              alt="icon"
+              style="width: 20px; border-radius: 15px"
+            />
+            <span> Artist: {{ elemento.artist }}</span>
+          </div>
+          <!--tags 2-->
+        </div>
+        <!--col xl 3-->
+        <div class="col-lg-9 mb-4">
+          <section>
+            <div class="card">
+              <div class="card-header">
+                <div style="float: left">
+                  <h1>{{ elemento.name }} - {{ elemento.superType }}</h1>
+                </div>
+                <!--float left-->
+              </div>
+              <!--card header-->
+              <div class="card-body">
+                <h4>Information</h4>
+                <h5 class="desc ml-2">{{ elemento.rules }}</h5>
+                <span style="margin-right: 3px;">
+                    <abbr data-title="Set-logo">
+                      <img
+                        src="{{elemento.setImg}}"
+                        alt="logo"
+                        style="width: 50px"
+                        class="icono"
+                      />
+                    </abbr>
+                  </span>
+                  {{elemento.set}}
+              </div>
+              <!--card body-->
+            </div>
+            <!--card-->
+          </section>
+          <!--section-->
+        </div>
+        <!--col xl 9-->
+      </div>
+      <!--row-->
+    </div>
+    <!--container-->
+  </div>

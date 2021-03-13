@@ -1,0 +1,50 @@
+<div *ngIf="app; else elseApp">
+<section *ngIf="showCard; else elseCard">
+  <div *ngIf="set">
+    <button class="btn" (click)="clickBack()">
+      <img
+        src="https://freesvg.org/img/left.png"
+        alt="back"
+        style="width: 50px"
+      />
+    </button>
+  </div>
+<div *ngIf="condicion; else elseBlock" class="wrapper">
+<div *ngFor="let data of lista; let i = index" >
+    <div class="cards" (click)="click(data)">
+    <figure class="card">
+      <img src = {{data.images.small}}/>
+      <figcaption>{{ data.name }} - set: {{data.set.name}}</figcaption>
+    </figure>
+  </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="cargar">
+    <div class="spinner-grow text-primary mr-2"></div>
+    <div class="spinner-grow text-success mr-2"></div>
+    <div class="spinner-grow text-info"></div>
+  </div>
+</ng-template>
+</section>
+
+<ng-template #elseCard>
+<div *ngIf="tipo; else elseTipo">
+  <app-tarjeta [elemento]="tarjeta" [isSet]="set"></app-tarjeta>
+</div>
+
+<ng-template #elseTipo>
+  <div>
+    <app-other-card [elemento] = "tarjeta" [isSet]="set"></app-other-card>
+  </div>
+</ng-template>
+ 
+</ng-template>
+
+</div>
+
+<ng-template #elseApp>
+  <app-set></app-set>
+
+</ng-template>
