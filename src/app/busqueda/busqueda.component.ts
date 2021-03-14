@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import * as _ from 'underscore';
+import { PagerService } from '../service/index';
+
 
 @Component({
   selector: 'app-busqueda',
@@ -21,7 +24,16 @@ export class BusquedaComponent implements OnInit {
 
   tarjeta = {};
 
-  constructor(private http: HttpClient) { }
+
+   // pager object
+   pager: any = {};
+
+   // paged items
+   pagedItems: any[];
+
+
+
+  constructor(private http: HttpClient,  private pagerService: PagerService) { }
 
   cargarDatosName() {
     let url = this.urlName + this.busquedaQuery;
@@ -31,9 +43,11 @@ export class BusquedaComponent implements OnInit {
         console.log(data['data']);
         this.lista = data['data'];
         this.condicion = true;
+        console.log(this.lista.length);
+        this.setPage(1);
       }
       else {
-        alert("no fue posible encontrar información de " + this.busquedaQuery);
+        alert("Can’t find any Pokémon with the name of " + this.busquedaQuery);
       }
       /* if(data['count']>0){
         this.algo=data['result'];
@@ -54,7 +68,7 @@ export class BusquedaComponent implements OnInit {
       } */
     }).catch((err: HttpErrorResponse) => {
       console.error('An error occurred:', err.error);
-      alert("Servidor sin conexion");
+      alert("503 Service Unavailable");
 
     });
   }
@@ -78,9 +92,11 @@ clickBack(){
         console.log(data['data']);
         this.lista = data['data'];
         this.condicion = true;
+        console.log(this.lista.length);
+        this.setPage(1);
       }
       else {
-        alert("no fue posible encontrar información del set");
+        alert("Can’t find any set");
       }
       /* if(data['count']>0){
         this.algo=data['result'];
@@ -101,7 +117,7 @@ clickBack(){
       } */
     }).catch((err: HttpErrorResponse) => {
       console.error('An error occurred:', err.error);
-      alert("Servidor sin conexion");
+      alert("503 Service Unavailable");
 
     });
   }
@@ -113,6 +129,7 @@ clickBack(){
       this.tipo = true;
       this.cargarDatosName();
       this.set=false;
+      
     }
     else {
       this.condicion = false;
@@ -120,6 +137,7 @@ clickBack(){
       this.tipo = true;
       this.cargarDatosSet();
       this.set=true;
+      
     }
   }
 
@@ -130,6 +148,7 @@ clickBack(){
       this.tipo = true;
       this.cargarDatosName();
       this.set=false;
+      
     }
     else {
       this.condicion = false;
@@ -141,6 +160,18 @@ clickBack(){
 
   }
 
+  setPage(page: number) {
+    if (page < 1 || page > this.pager.totalPages) {
+        return;
+    }
+
+    // get pager object from service
+    this.pager = this.pagerService.getPager(this.lista.length, page);
+
+    // get current page of items
+    this.pagedItems = this.lista.slice(this.pager.startIndex, this.pager.endIndex + 1);
+    console.log(this.pagedItems);
+}
 
   img(type) {
     switch (type) {
@@ -303,5 +334,7 @@ clickBack(){
       this.showCard = false;
     }
   }
+
+  
 
 }

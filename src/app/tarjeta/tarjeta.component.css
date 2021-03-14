@@ -160,3 +160,32 @@ abbr[data-title]:focus::after {
   font-size: 14px;
   padding: 3px 5px;
 }
+
+@media (max-width: 560px) {
+  .weakness{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1em;
+    margin-top: 7%;
+  }
+}
+
+@media (max-width: 450px) {
+  .weakness{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    margin-top: 7%;
+  }
+}
+
+@media (max-width: 360px) {
+  .desc{
+    font-size: small;
+  }
+  td{
+    padding: 7px;
+  }
+}

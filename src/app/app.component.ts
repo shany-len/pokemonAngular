@@ -17,7 +17,7 @@ export class AppComponent {
   buscar(letra) {
     console.log(letra.value);
     if(letra.value=="" || letra.value=='' ||letra.value==null){
-      alert("No puedes dejar este campo en blanco");
+      alert("You can't leave this field blank");
     }
     else{
     this.busquedaInput = '';

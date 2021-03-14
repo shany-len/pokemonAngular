@@ -131,3 +131,8 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.btn{
+  background-color: #fff;
+  padding: 0;
+}

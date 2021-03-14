@@ -9,6 +9,7 @@ import { SetComponent } from './set/set.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OtherCardComponent } from './other-card/other-card.component';
 import { SetCardComponent } from './set-card/set-card.component';
+import { PagerService } from './service/index';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,9 @@ import { SetCardComponent } from './set-card/set-card.component';
     AppRoutingModule,
     
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule, 
+  PagerService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

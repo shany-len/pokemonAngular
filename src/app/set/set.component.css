@@ -55,6 +55,7 @@
   .card {
     border-radius: 20px;
     box-shadow: 5px 5px 20px rgb(0 0 0 / 45%);
+    width: 100%;
   }
   
   .card-header {
@@ -88,4 +89,49 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
+  }
+
+  @media (max-width: 980px) {
+    .wrapper {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1em;
+      margin-top: 7%;
+    }
+    .text{
+      display:inline-block;
+      padding:0.5em 1em;
+      min-width:10em;
+      line-height:1.2em;
+      background: #2a8dff;
+      position:relative;
+    }
+  }
+
+ @media (max-width: 540px) {
+    .wrapper {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1em;
+      margin-top: 7%;
+    }
+  }
+  @media (max-width: 410px) {
+    .wrapper {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1em;
+      margin-top: 7%;
+    }
+    .text{
+      display:inline-block;
+      padding:0.5em 1em;
+      min-width: 3em;
+      line-height:1.2em;
+      background: #2a8dff;
+      position:relative;
+    }
   }

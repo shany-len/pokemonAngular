@@ -45,11 +45,15 @@
           type="text"
           class="form-control"
           #buscarInput
-          placeholder="Buscar"
+          placeholder="Search"
         />
         <div class="input-group-append">
           <button class="btn btn-success" (click)="buscar(buscarInput)">
-            Buscar
+           <img 
+           src="https://www.pinclipart.com/picdir/big/142-1425732_google-web-search-icon-search-icon-png-white.png"
+           alt="search"
+           style="height: 35px;"
+           >
           </button>
         </div>
       </div>
@@ -62,7 +66,8 @@
       </div>
 
       <ng-template #elseBlock>
-        <h1 class="tituloPrevio mt-5">Ingresa tu búsqueda</h1>
+        <h1 class="tituloPrevio mt-5">Write a Pokémon name
+        </h1>
       </ng-template>
     </div>
     <div id="set" class="container-fluid tab-pane fade">
