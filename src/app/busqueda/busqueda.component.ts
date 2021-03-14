@@ -176,37 +176,37 @@ clickBack(){
   img(type) {
     switch (type) {
       case "Colorless":
-        return ("/src/assets/tipos/normal.png");
+        return ("assets/tipos/normal.png");
 
       case "Darkness":
-        return ("/src/assets/tipos/dark.png");
+        return ("assets/tipos/dark.png");
 
       case "Dragon":
-        return ("/src/assets/tipos/dragon.png");
+        return ("assets/tipos/dragon.png");
 
       case "Fairy":
-        return ("/src/assets/tipos/fairy.png");
+        return ("assets/tipos/fairy.png");
 
       case "Fighting":
-        return ("/src/assets/tipos/fighting.png");
+        return ("assets/tipos/fighting.png");
 
       case "Fire":
-        return ("/src/assets/tipos/fire.png");
+        return ("assets/tipos/fire.png");
 
       case "Grass":
-        return ("/src/assets/tipos/grass.png");
+        return ("assets/tipos/grass.png");
 
       case "Lightning":
-        return ("/src/assets/tipos/electric.png");
+        return ("assets/tipos/electric.png");
 
       case "Metal":
-        return ("/src/assets/tipos/steel.png");
+        return ("assets/tipos/steel.png");
 
       case "Psychic":
-        return ("/src/assets/tipos/psichic.png");
+        return ("assets/tipos/psichic.png");
 
       case "Water":
-        return ("/src/assets/tipos/water.png");
+        return ("assets/tipos/water.png");
 
     }
   }
